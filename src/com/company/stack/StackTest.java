@@ -1,48 +1,52 @@
 package com.company.stack;
 
-public class StackTest<T> implements Stack {
+
+public class StackTest<T> implements Stack<T> {
     private Item<T> top = null;
     private int counter = 0;
+    private int max = 10;
 
     private static class Item<T> {
         public T data;
         public Item<T> next;
-        public Item<T> previous;
+
 
         public Item(T data ) {
             this.data = data;
             this.next = null;
-            this.previous = null;
+
         }
     }
 
     @Override
-    public void push(Object data) {
-        Item<T> item = new Item<T>((T) data);
+    public void push(T data) {
+        Item<T> item = new Item<T>(data);
         if ( isEmpty() == true ) {
-        top = item;
-        } else {
-            top.next = item;
-            item.previous = top;
             top = item;
+            counter++;
+        } else if ( isFull() == true ){
+            System.out.println(" stack has reached maximum value");
+        } else  {
+            Item<T> temp = top;
+            top = item;
+            top.next = temp;
+            counter++;
         }
-        counter++;
     }
 
     @Override
-    public Object pop() {
+    public  T pop() {
         if ( isEmpty() == true) {
-            return false;
+            System.out.println("list is empty");
         } else {
-            top = top.previous;
-            top.next = null;
+            top = top.next;
             counter --;
         }
-            return true;
+        return null;
     }
 
     @Override
-    public Object top() {
+    public T top() {
         return top.data;
     }
 
@@ -57,6 +61,10 @@ public class StackTest<T> implements Stack {
 
     @Override
     public boolean isFull() {
-        return false;
+        if ( counter == max ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
