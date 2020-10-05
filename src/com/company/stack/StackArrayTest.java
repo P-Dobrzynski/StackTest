@@ -16,7 +16,7 @@ public class StackArrayTest<T> implements Stack<T>  {
     if ( this.stackData[0] == null ) {
         this.stackData[0] = data;
         popCounter = 1;
-    }else if ( isFull() == true){
+    }else if (isFull()){
         System.out.println(" this stack is full");
     } else {
         if (popCounter-1 <= stackData.length) {
@@ -30,7 +30,7 @@ public class StackArrayTest<T> implements Stack<T>  {
 
     @Override
     public T pop() {
-        if ( isEmpty() == true) {
+        if (isEmpty()) {
             System.out.println("this stack is empty");
             return null;
         }else {
@@ -48,19 +48,11 @@ public class StackArrayTest<T> implements Stack<T>  {
 
     @Override
     public boolean isEmpty() {
-       if ( this.stackData[0] == null) {
-           return true;
-       } else {
-           return false;
-       }
+        return this.stackData[0] == null;
     }
 
     @Override
     public boolean isFull() {
-        if (this.stackData[STACK_SIZE - 1] != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.stackData[STACK_SIZE - 1] != null;
     }
 }
