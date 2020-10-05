@@ -19,11 +19,11 @@ public class StackTest<T> implements Stack<T> {
 
     @Override
     public void push(T data) {
-        Item<T> item = new Item<T>(data);
-        if ( isEmpty() == true ) {
+        Item<T> item = new Item<>(data);
+        if (isEmpty()) {
             top = item;
             counter++;
-        } else if ( isFull() == true ){
+        } else if (isFull()){
             System.out.println(" stack has reached maximum value");
         } else  {
             Item<T> temp = top;
@@ -35,7 +35,7 @@ public class StackTest<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        if ( isEmpty() == true) {
+        if (isEmpty()) {
            System.out.println("list is empty");
            return null;
         } else {
@@ -52,19 +52,11 @@ public class StackTest<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        if ( counter == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return counter == 0;
     }
 
     @Override
     public boolean isFull() {
-        if ( counter == max ) {
-            return true;
-        } else {
-            return false;
-        }
+        return counter == max;
     }
 }
