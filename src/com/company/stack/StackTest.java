@@ -14,7 +14,6 @@ public class StackTest<T> implements Stack<T> {
         public Item(T data ) {
             this.data = data;
             this.next = null;
-
         }
     }
 
@@ -35,14 +34,15 @@ public class StackTest<T> implements Stack<T> {
     }
 
     @Override
-    public  T pop() {
+    public T pop() {
         if ( isEmpty() == true) {
-            System.out.println("list is empty");
+           System.out.println("list is empty");
+           return null;
         } else {
             top = top.next;
             counter --;
+            return (T) top;
         }
-        return null;
     }
 
     @Override
