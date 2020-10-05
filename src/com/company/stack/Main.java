@@ -2,7 +2,7 @@ package com.company.stack;
 
 public class Main {
     static StackTest<Integer> myStack = new StackTest<>();
-    static StackArrayTest myStackArray = new StackArrayTest<>();
+    static StackArrayTest<Integer> myStackArray = new StackArrayTest<>();
     public static void main(String[] args) {
 
         fillTheStack();
@@ -16,8 +16,11 @@ public class Main {
         System.out.println(" top of the array is : " + myStackArray.top());
         System.out.println(" array is full ? " + myStackArray.isFull());
         System.out.println(" array is empty ? " + myStackArray.isEmpty());
-
-
+        myStackArray.push(666);
+        System.out.println(myStackArray.top());
+        myStackArray.push(5);
+        int a = myStackArray.top();
+        System.out.println("top: " + a);
     }
     public static void fillTheStack() {
         myStack.push(1);

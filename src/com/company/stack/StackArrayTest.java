@@ -1,7 +1,7 @@
 package com.company.stack;
 
 public class StackArrayTest<T> implements Stack<T>  {
-    private int STACK_SIZE = 10;
+    private static final int STACK_SIZE = 10;
     private T[] stackData;
     private T top;
     private int popCounter = 0;
@@ -13,7 +13,7 @@ public class StackArrayTest<T> implements Stack<T>  {
 
     @Override
     public void push(T data) {
-    if ( this.stackData[0] == null ) {
+    if ( isEmpty()) {
         this.stackData[0] = data;
         popCounter = 1;
     }else if (isFull()){
@@ -48,11 +48,11 @@ public class StackArrayTest<T> implements Stack<T>  {
 
     @Override
     public boolean isEmpty() {
-        return this.stackData[0] == null;
+        return this.popCounter == 0;
     }
 
     @Override
     public boolean isFull() {
-        return this.stackData[STACK_SIZE - 1] != null;
+        return this.popCounter == 10;
     }
 }
